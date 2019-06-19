@@ -1,0 +1,14 @@
+Metadata-Version: 2.1
+Name: interads
+Version: 0.2
+Summary: Sort description
+Home-page: https://github.com/tanphat198/Weventure-internship/tree/master/ExchangeRates
+Author: Phat Minh
+Author-email: ntphat@apcs.vn
+License: UNKNOWN
+Description: Full description
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Description-Content-Type: text/markdown

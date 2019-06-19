@@ -1,0 +1,17 @@
+setup.py
+core/__init__.py
+core/resource.py
+core/delegation/__init__.py
+core/delegation/responsehandler.py
+core/exception/__init__.py
+core/exception/exceptions.py
+interads.egg-info/PKG-INFO
+interads.egg-info/SOURCES.txt
+interads.egg-info/dependency_links.txt
+interads.egg-info/top_level.txt
+services/__init__.py
+services/exchangerate.py
+services/propeller.py
+services/responses.py
+test/test_exchangerates.py
+test/test_propeller.py

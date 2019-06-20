@@ -1,5 +1,5 @@
 
     Install offline:
-pip install interads-0.2.tar.gz
+pip intall interads-0.3.tar.gz
     Install qua pypi:
 pip install interads

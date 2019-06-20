@@ -54,3 +54,8 @@ class ResourceFieldNotFoundException(Exception):
         """
         self.message = "Resource(%s) does not support field(%s). Declared(%s)" % (
             type(resource), field, resource.fields)
+
+
+class WrongInputException(Exception):
+    def __init__(self, mess):
+        super().__init__(mess)

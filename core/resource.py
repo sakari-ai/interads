@@ -1,8 +1,8 @@
 import requests
-import json
+
 from core.delegation.responsehandler import ResponseHandler
-from core.exception.exceptions import  ResourceFieldNotFoundException
-from services.responses import ExchangeRateObject
+from core.exception.exceptions import ResourceFieldNotFoundException
+
 
 def fields(fields):
     class ResourceWrapper(object):
@@ -17,6 +17,7 @@ def fields(fields):
             return resource
 
     return ResourceWrapper
+
 
 class Configuration(object):
     def __init__(self, host, auth_handler, handler=None, service_name=None):
@@ -152,36 +153,23 @@ class AbstractResource(object):
         return self.response_handler.handle(result)
 
 
-
 class APIResource(AbstractResource):
     """Internal API Resource"""
 
     def __init__(self, config):
         super(APIResource, self).__init__(config)
 
-
     def update(self, uri="/", **kwargs):
         return self._perform("PUT", uri, **kwargs)  # pragma: no cover
-
 
     def get(self, uri="/", **kwargs):
         return self._perform("GET", uri=uri, **kwargs)
 
-
     def delete(self, uri="/", **kwargs):
         self._perform("DELETE", uri, **kwargs)  # pragma: no cover
 
-
-    @property
-    def header(self):
-        header = super(APIResource, self).header
-        header['Content-Type'] = 'application/json'
-        return header
-
-
     def add(self, uri="/", **kwargs):
         self._perform("POST", uri, **kwargs)  # pragma: no cover
-
 
     def create(self, uri="/", **kwargs):
         self._perform("POST", uri, **kwargs)  # pragma: no cover

@@ -2,7 +2,7 @@ import setuptools
 
 setuptools.setup(
     name="interads",
-    version="0.2",
+    version="0.3",
     author="Phat Minh",
     author_email="ntphat@apcs.vn",
     description="Sort description",

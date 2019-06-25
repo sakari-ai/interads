@@ -3,7 +3,7 @@ import httpretty
 import json
 
 from services.propeller import PropellerService
-from services.propeller_response import PropellerStatObject
+from services.responses.propeller_response import PropellerStatObject
 from core.exception.exceptions import WrongInputException
 
 

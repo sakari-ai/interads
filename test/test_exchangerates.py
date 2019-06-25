@@ -3,7 +3,7 @@ import httpretty
 import json
 
 from services.exchangerate import ExchangeService
-from services.exchange_response import ExchangeRateObject
+from services.responses.exchange_response import ExchangeRateObject
 from core.exception.exceptions import WrongInputException
 
 

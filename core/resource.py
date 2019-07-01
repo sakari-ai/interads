@@ -147,7 +147,9 @@ class AbstractResource(object):
         return self._header
 
     def _perform(self, method, uri, **kwargs):
+        #print(self._host+uri)
         result = requests.request(method, url=self._host+uri, **kwargs)
+
         return self.response_handler.handle(result)
 
 

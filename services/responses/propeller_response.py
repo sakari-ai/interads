@@ -18,3 +18,18 @@ class PropellerStatObject:
         if self.result == other.result and self.meta == other.meta:
             return True
         return False
+
+
+class PropellerCampaignObject:
+    def __init__(self, res):
+        self.data = res
+
+    def __eq__(self, other):
+        if type(other) != type(self):
+            return False
+        if self.data == other.data:
+            return True
+        return False
+
+    def __str__(self):
+        return self.data

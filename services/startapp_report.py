@@ -4,24 +4,24 @@ from services.responses.startapp_report_response import StartAppReportObject
 import json
 
 class StartAppReportService(APIResource):
-    def __init__(self):
-        #self._pid = pid
-        #self._token = token
-        #self.extend = {"partner": pid, "token": token, "startDate": start, "endDate": end}
+    def __init__(self, pid, token, startDate, endDate ):
+        self._pid = pid
+        self._token = token
+        self.extend = {"partner": pid, "token": token, "startDate": startDate, "endDate": endDate}
         config = Configuration("http://api.startapp.com/adv/report/1.0",
                                auth_handler=False, handler=StartAppReportHandler(),
                                service_name='Startapp Reporting Service')
 
         super().__init__(config)
 
-    def get_report(self, pid, token, startDate, endDate, dimensions=None, filtering=None, paging=None, header=None):
+    def get_report(self, dimensions=None, filtering=None, paging=None, header=None):
         """
             dimensions: list of optional dimensions
             filtering: dict {"dimension" : "value"}
             paging: boolean for pagingEnabled
             header: boolean for header
         """
-        options = "?partner={}&token={}&startDate={}&endDate={}".format(pid,token,startDate,endDate)
+        options = ""
         if dimensions:
             for d in dimensions:
                 options = "".join([options, "&dimension={}".format(d)])
@@ -31,7 +31,7 @@ class StartAppReportService(APIResource):
             self.extend.update({"pagingEnabled": True})
         if header:
             header = {'Accept-Encoding': 'gzip'}
-        return self.get("{}".format(options), headers=header)
+        return self.get("{}".format(options), headers=header, params=self.extend)
 
 
 class StartAppReportHandler(ResponseHandler):
@@ -41,3 +41,4 @@ class StartAppReportHandler(ResponseHandler):
         if res['logs']:
             return res['logs']
         return StartAppReportObject(res)
+

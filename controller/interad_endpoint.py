@@ -1,6 +1,6 @@
 from flask_restful import Resource, reqparse
 
-from controller.transformer import StartappTransformer, ZeroparkTransformer
+from controller.transformers import StartappTransformer, ZeroparkTransformer
 from services.startapp_report import StartAppReportService
 from services.zeropark import ZeroparkService
 
@@ -16,7 +16,7 @@ class InteradResource(Resource):
     def get(self, source):
         params = InteradResource.parser.parse_args()
         model = InteradModel.find_source(source=source, params=params)
-        return {"impressions": model.get_impression(), "clicks": model.get_click(), "spent": model.get_spent()}
+        return {"impressions": model.get_impressions(), "clicks": model.get_click(), "spent": model.get_spent()}
 
 
 class InteradModel(object):
@@ -25,7 +25,7 @@ class InteradModel(object):
         if source == "startapp":
             startapp = StartAppReportService(params['pid'], params["token"],
                                              params["startDate"], params["endDate"])
-            return StartappTransformer(params["cid"]).transform_startapp_data(startapp.get_report())
+            return StartappTransformer(params["cid"]).transform(startapp.get_report())
         elif source == "zeropark":
             zeropark = ZeroparkService(token=params["token"])
             return ZeroparkTransformer(params["cid"]).transform(zeropark.get_all_campaigns_with_custom_interval(

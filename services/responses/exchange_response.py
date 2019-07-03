@@ -5,7 +5,7 @@ class ExchangeRateObject:
     def __init__(self, result):
         for num in result:
             if num not in ["base", "rates", "date", "start_at", "end_at"]:
-                raise WrongInputException('WRONG INPUT')
+                raise WrongInputException("Response has unexpected field: {}".format(num))
         self.base = result['base']
         self.rates = result['rates']
         self.date = None

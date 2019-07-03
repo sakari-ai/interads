@@ -52,7 +52,6 @@ class AbstractResource(object):
         self._header = None
         self._host = config.host
         self._service_name = config.service_name
-        self._params = {}
         self._response_handler = config.handler
         self._auth_handler = config.auth_handler
         self._init = True
@@ -148,7 +147,6 @@ class AbstractResource(object):
         return self._header
 
     def _perform(self, method, uri, **kwargs):
-
         result = requests.request(method, url=self._host+uri, **kwargs)
         return self.response_handler.handle(result)
 
@@ -172,7 +170,7 @@ class APIResource(AbstractResource):
         self._perform("POST", uri, **kwargs)  # pragma: no cover
 
     def create(self, uri="/", **kwargs):
-        self._perform("POST", uri, **kwargs)  # pragma: no cover
+        return self._perform("POST", uri, **kwargs)  # pragma: no cover
 
 
 class JsonResponseHandler(ResponseHandler):

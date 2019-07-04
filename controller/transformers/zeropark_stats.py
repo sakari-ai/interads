@@ -7,8 +7,11 @@ class ZeroparkTransformer:
         self._cid = cid
 
     def transform(self, service):
-        for i in service.elements:
-            if i['details']['id'] == self._cid:
-                schema = CampaignStatsSchema()
-                data = {'impressions': 0, "clicks": 0, "spent": i['stats']["spent"]}
-                return CampaignStatsObject(**schema.load(data))
+        try:
+            for i in service.elements:
+                if i['details']['id'] == self._cid:
+                    schema = CampaignStatsSchema()
+                    data = {'impressions': 0, "clicks": 0, "spent": i['stats']["spent"]}
+                    return CampaignStatsObject(**schema.load(data))
+        except:
+            return {"Error": service}

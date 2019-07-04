@@ -40,5 +40,7 @@ class StartAppReportHandler(ResponseHandler):
         res = response.json()
         if res['logs']:
             return res['logs']
-        return StartAppReportObject(res)
+        if res['data']:
+            return StartAppReportObject(res)
+        return "One or more of your parameters is invalid"
 

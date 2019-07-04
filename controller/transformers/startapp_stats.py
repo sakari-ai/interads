@@ -7,9 +7,12 @@ class StartappTransformer:
         self._cid = cid
 
     def transform(self, service):
-        for i in service.data:
-            if i['campaignId'] == self._cid:
-                schema = CampaignStatsSchema()
-                data = {'impressions': i["impressions"], "clicks": i["clicks"], "spent": i["spent"]}
-                return CampaignStatsObject(**schema.load(data))
+        try:
+            for i in service.data:
+                if i['campaignId'] == self._cid:
+                    schema = CampaignStatsSchema()
+                    data = {'impressions': i["impressions"], "clicks": i["clicks"], "spent": i["spent"]}
+                    return CampaignStatsObject(**schema.load(data))
+        except:
+            return {"Error": service}
 

@@ -1,0 +1,6 @@
+Flask
+Flask-RESTful
+marshmallow
+requests
+urllib3
+httpretty

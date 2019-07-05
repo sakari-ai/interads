@@ -58,4 +58,4 @@ class ResourceFieldNotFoundException(Exception):
 
 class WrongInputException(Exception):
     def __init__(self, mess):
-        super().__init__(mess)
+        self.messages = {"Error": mess}

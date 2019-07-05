@@ -1,4 +1,5 @@
 from core.delegation.responsehandler import ResponseHandler
+from core.exception.exceptions import WrongInputException
 from core.resource import APIResource, Configuration
 from services.responses.zeropark_response import ZeroparkObject
 import requests
@@ -43,6 +44,6 @@ class ZeroparkHandler(ResponseHandler):
     def handle(response):
         res = response.json()
         if 'error' in res:
-            return res['error']
+            raise WrongInputException(res['error'])
         return ZeroparkObject(res)
 

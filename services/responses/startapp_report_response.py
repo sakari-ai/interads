@@ -1,4 +1,3 @@
-from core.exception.exceptions import WrongInputException
 
 
 class StartAppReportObject:

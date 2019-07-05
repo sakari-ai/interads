@@ -1,7 +1,7 @@
 from marshmallow import Schema, fields
 
 
-class InputRequirement(Schema):
+class StatsInput(Schema):
     pid = fields.Str()
     cid = fields.Str(required=True)
     token = fields.Str(required=True)

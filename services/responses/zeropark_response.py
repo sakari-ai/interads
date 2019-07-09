@@ -1,4 +1,4 @@
-from core.exception.exceptions import WrongInputException
+from core.exception.exceptions import InputException
 
 
 class ZeroparkObject:

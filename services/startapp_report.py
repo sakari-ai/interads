@@ -1,4 +1,5 @@
 from core.delegation.responsehandler import ResponseHandler
+from core.exception.exceptions import InputException
 from core.resource import APIResource, Configuration
 from services.responses.startapp_report_response import StartAppReportObject
 import json
@@ -39,6 +40,8 @@ class StartAppReportHandler(ResponseHandler):
     def handle(response):
         res = response.json()
         if res['logs']:
-            return res['logs']
-        return StartAppReportObject(res)
+            raise InputException(res['logs'])
+        if res['data']:
+            return StartAppReportObject(res)
+        raise InputException("One or more of your parameters is invalid")
 

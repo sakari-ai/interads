@@ -4,7 +4,7 @@ import json
 
 from services.selfadvertiser import SelfAdvertiserService
 from services.responses.selfadvertise_response import SelfAdvertiserObject
-from core.exception.exceptions import WrongInputException
+from core.exception.exceptions import InputException
 
 
 class TestFunction(unittest.TestCase):

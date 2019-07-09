@@ -1,11 +1,11 @@
-from core.exception.exceptions import WrongInputException
+from core.exception.exceptions import InputException
 
 
 class ExchangeRateObject:
     def __init__(self, result):
         for num in result:
             if num not in ["base", "rates", "date", "start_at", "end_at"]:
-                raise WrongInputException("Response has unexpected field: {}".format(num))
+                raise InputException("Response has unexpected field: {}".format(num))
         self.base = result['base']
         self.rates = result['rates']
         self.date = None

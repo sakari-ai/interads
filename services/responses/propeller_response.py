@@ -1,11 +1,11 @@
-from core.exception.exceptions import WrongInputException
+from core.exception.exceptions import InputException
 
 
 class PropellerStatObject:
     def __init__(self, res):
         for num in res:
             if num not in ["result", "meta"]:
-                raise WrongInputException("Response has unexpected field: {}".format(num))
+                raise InputException("Response has unexpected field: {}".format(num))
         self.result = res['result']
         self.meta = res['meta']
 

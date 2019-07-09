@@ -4,7 +4,7 @@ import json
 
 from services.propeller import PropellerService
 from services.responses.propeller_response import PropellerStatObject,PropellerCampaignObject
-from core.exception.exceptions import WrongInputException
+from core.exception.exceptions import InputException
 
 
 class TestFunction(unittest.TestCase):

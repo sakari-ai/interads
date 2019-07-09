@@ -4,7 +4,7 @@ import json
 
 from services.zeropark import ZeroparkService
 from services.responses.zeropark_response import ZeroparkObject
-from core.exception.exceptions import WrongInputException
+from core.exception.exceptions import InputException
 
 
 class TestFunction(unittest.TestCase):

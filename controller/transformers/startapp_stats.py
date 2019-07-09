@@ -1,6 +1,6 @@
 from controller.representatives.campaign_stats_object import CampaignStatsObject
 from controller.schemas.campaign_stats_schema import CampaignStatsSchema
-from core.exception.exceptions import WrongInputException
+from core.exception.exceptions import InputException
 
 
 class StartappTransformer:
@@ -13,5 +13,5 @@ class StartappTransformer:
                 schema = CampaignStatsSchema()
                 rdata = {'impressions': i["impressions"], "clicks": i["clicks"], "spent": i["spent"]}
                 return CampaignStatsObject(**schema.load(rdata))
-        raise WrongInputException("Your campaignId does not exist")
+        raise InputException("Your campaignId does not exist")
 

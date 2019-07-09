@@ -1,10 +1,10 @@
-from core.exception.exceptions import WrongInputException
+from core.exception.exceptions import InputException
 
 class StartAppOptimizationObject:
     def __init__(self, res):
         for num in res:
             if num not in ["data", "summary"]:
-                raise WrongInputException("Response has unexpected field: {}".format(num))
+                raise InputException("Response has unexpected field: {}".format(num))
         self.data = res['data']
         self.summary = res['summary']
 

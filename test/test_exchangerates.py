@@ -4,7 +4,7 @@ import json
 
 from services.exchangerate import ExchangeService
 from services.responses.exchange_response import ExchangeRateObject
-from core.exception.exceptions import WrongInputException
+from core.exception.exceptions import InputException
 
 
 class TestFunction(unittest.TestCase):
@@ -54,7 +54,7 @@ class TestFunction(unittest.TestCase):
 
     @httpretty.activate
     def test_wrong_input(self):
-        with self.assertRaises(WrongInputException):
+        with self.assertRaises(InputException):
             body_test = {"wrong": "abc", "input": "xyz"}
             httpretty.register_uri(httpretty.GET,
                                    "https://api.exchangeratesapi.io/latest",
